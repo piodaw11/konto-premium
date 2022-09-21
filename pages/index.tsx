@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react'
-
-import HomeView from 'src/client/presentation/HomePage/views/HomeView/HomeView'
-import Product from 'src/client/presentation/Products/types/Product'
 import { MongoClient } from 'mongodb'
 
+import HomeView from 'src/client/presentation/HomePage/views/HomeView/HomeView'
+
 type Props = {
-  products: Product[]
+  products: string
 }
 
 const Home: FunctionComponent<Props> = ({ products }) => <HomeView homeProducts={products} />

@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react'
-
-import AllProductsView from 'src/client/presentation/Products/views/AllProductsView'
-import Product from 'src/client/presentation/Products/types/Product'
 import { MongoClient } from 'mongodb'
 
+import AllProductsView from 'src/client/presentation/Products/views/AllProductsView'
+
 type Props = {
-  products: Product[]
+  products: string
 }
 
 const Products: FunctionComponent<Props> = ({ products }) => <AllProductsView items={products} />

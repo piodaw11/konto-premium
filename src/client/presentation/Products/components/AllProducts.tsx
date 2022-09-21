@@ -24,7 +24,7 @@ const AllProducts: FunctionComponent<Props> = ({ allProducts }) => {
   return (
     <StyledProductPageWrapper>
       <StyledCategoriesWrapper>
-        <AllProductsSideNav category={allProducts} />
+        <AllProductsSideNav />
       </StyledCategoriesWrapper>
       <StyledItemWrapper>
         <StyledFilterWrapper>
