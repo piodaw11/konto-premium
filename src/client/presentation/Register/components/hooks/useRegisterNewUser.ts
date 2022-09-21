@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 
 import RegisterForm from 'src/client/presentation/Register/components/types/RegisterForm'
-import useRegisterForm from 'src/client/presentation/Register/components/hooks/useRegisterForm'
 
 const useRegisterNewUser = () => {
   const [newUser, setNewUser] = useState(undefined as RegisterForm | undefined)

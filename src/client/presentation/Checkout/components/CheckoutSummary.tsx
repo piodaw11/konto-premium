@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent } from 'react'
 
 import {
   StyledSummaryTitle,
@@ -13,12 +13,10 @@ import {
   StyledSubmitButton
 } from './CheckoutSummary.styled'
 import CheckoutOrderItems from 'src/client/presentation/Checkout/components/CheckoutOrderItems'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import CartItem from 'src/client/presentation/Cart/types/CartItem'
 import { Checkbox, FormControlLabel } from '@mui/material'
 import axios from 'axios'
-import Cookies from 'js-cookie'
-import { checkoutActions } from 'src/client/presentation/Checkout/components/store/checkoutSlice'
 
 type Props = {
   totalPrice: number

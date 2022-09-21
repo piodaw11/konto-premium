@@ -21,8 +21,6 @@ const ItemListing: FunctionComponent<Props> = ({ allProducts }) => {
             id={item._id}
             title={item.title}
             price={item.price}
-            description={item.description}
-            category={item.category}
             image={item.image}
           />
       ))}

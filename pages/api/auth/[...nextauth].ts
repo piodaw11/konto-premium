@@ -2,7 +2,6 @@ import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 import clientPromise from 'pages/api/auth/lib/mongodb'
-import LoginForm from 'src/client/presentation/Login/components/types/LoginForm'
 
 export default NextAuth({
   session: {
@@ -12,17 +11,20 @@ export default NextAuth({
   },
   providers: [
     CredentialsProvider({
-      credentials: undefined,
+      credentials: {
+        email: { label: 'Email', type: 'text', placeholder: 'email' },
+        password: { label: 'Password', type: 'password' }
+      },
       name: 'credentials',
       type: 'credentials',
       id: 'credentials',
-      async authorize(credentials: LoginForm) {
+      async authorize(credentials) {
         const client = await clientPromise
         const db = client.db('konto-premium')
         const collection = db.collection('users')
         const user = await collection.findOne({
-          email: credentials.email,
-          password: credentials.password
+          email: credentials?.email,
+          password: credentials?.password
         })
         if (!user) {
           throw new Error('Użytkownik nie istnieje')
@@ -32,7 +34,7 @@ export default NextAuth({
             email: user.email
           }
         }
-        return undefined
+        return null
       }
     })
   ]

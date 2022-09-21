@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { FunctionComponent, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
@@ -10,7 +10,11 @@ import CheckoutForm from 'src/client/infrastructure/components/CheckoutForm'
 // This is your test publishable API key.
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
-const Test = () => {
+type Options = {
+  clientSecret: string
+}
+
+const Test: FunctionComponent<Options> = () => {
   const [clientSecret, setClientSecret] = useState('')
 
   const cartItems = useSelector((state: any) => state.cart)
@@ -29,7 +33,7 @@ const Test = () => {
   const appearance = {
     theme: 'stripe'
   }
-  const options = {
+  const options: { clientSecret: string, appearance: any } = {
     clientSecret,
     appearance
   }

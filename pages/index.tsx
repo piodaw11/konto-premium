@@ -12,8 +12,8 @@ const Home: FunctionComponent<Props> = ({ products }) => <HomeView homeProducts=
 
 export default Home
 
-export const getStaticProps = async () => {
-  const allProducts = await axios.get('http://localhost:3000/api/products/getAll')
+export const getServerSideProps = async () => {
+  const allProducts = await axios.get('/api/products/getAll')
 
   return {
     props: {

@@ -11,7 +11,7 @@ const MyAccountView = () => {
   } = useSession()
 
   const router = useRouter()
-
+  console.log(session)
   if (status === 'unauthenticated') {
     router.push(Pages.Login)
   }

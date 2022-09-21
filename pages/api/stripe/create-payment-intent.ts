@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-const calculateOrderAmount = (items) => items * 100
+const calculateOrderAmount = (items: number) => items * 100
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { items } = req.body

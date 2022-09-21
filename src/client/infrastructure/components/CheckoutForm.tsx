@@ -9,7 +9,7 @@ export default function CheckoutForm() {
   const stripe = useStripe()
   const elements = useElements()
 
-  const [message, setMessage] = React.useState(null)
+  const [message, setMessage] = React.useState('' as string | undefined)
   const [isLoading, setIsLoading] = React.useState(false)
 
   React.useEffect(() => {
@@ -43,7 +43,7 @@ export default function CheckoutForm() {
     })
   }, [stripe])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
 
     if (!stripe || !elements) {
@@ -79,7 +79,7 @@ export default function CheckoutForm() {
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button type="submit" disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner" /> : 'Pay now'}
         </span>

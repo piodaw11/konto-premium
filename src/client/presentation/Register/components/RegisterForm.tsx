@@ -31,36 +31,36 @@ const RegisterForm: FunctionComponent = () => {
 
   return (
     <StyledFormWrapper>
-    <StyledForm onSubmit={handleSubmit(handleRegisterNewUser)}>
-      <StyledCloseForm onClick={onCloseFormHandler}>&#x2715;</StyledCloseForm>
-      <StyledInputWrapper>
-        {registerFormItems.map(({ label, name, type }) => (
-          <StyledInput key={label}>
-            <StyledLabel htmlFor={name}>{label}</StyledLabel>
-            <Controller
-              name={name as Name}
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  variant="outlined"
-                  type={type}
-                  placeholder={label}
-                  error={Boolean(errors[name as Name])}
-                />
+      <StyledForm onSubmit={handleSubmit(handleRegisterNewUser)}>
+        <StyledCloseForm onClick={onCloseFormHandler}>&#x2715;</StyledCloseForm>
+        <StyledInputWrapper>
+          {registerFormItems.map(({ label, name, type }) => (
+            <StyledInput key={label}>
+              <StyledLabel htmlFor={name}>{label}</StyledLabel>
+              <Controller
+                name={name as Name}
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    variant="outlined"
+                    type={type}
+                    placeholder={label}
+                    error={Boolean(errors[name as Name])}
+                  />
                 )}
-            />
-            {errors[name as Name] && <StyledTypography>{errors[name as Name]?.message}</StyledTypography>}
-          </StyledInput>
+              />
+              {errors[name as Name] && <StyledTypography>{errors[name as Name]?.message}</StyledTypography>}
+            </StyledInput>
         ))}
-      </StyledInputWrapper>
-      <StyledButtonWrapper>
-        <Button type="submit" disabled={!isValid} variant="contained">Zarejestruj</Button>
-      </StyledButtonWrapper>
-      <StyledDividerWrapper>
-        <FormControlLabel control={<Checkbox required />} label="Akceptuję politykę prywatności" />
-      </StyledDividerWrapper>
-    </StyledForm>
+        </StyledInputWrapper>
+        <StyledButtonWrapper>
+          <Button type="submit" disabled={!isValid} variant="contained">Zarejestruj</Button>
+        </StyledButtonWrapper>
+        <StyledDividerWrapper>
+          <FormControlLabel control={<Checkbox required />} label="Akceptuję politykę prywatności" />
+        </StyledDividerWrapper>
+      </StyledForm>
     </StyledFormWrapper>
   )
 }
