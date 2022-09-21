@@ -5,11 +5,11 @@ import Product from 'src/client/presentation/Products/types/Product'
 import { Typography } from '@mui/material'
 
 type Props = {
-  category: Product[]
+  category: string
 }
 
 const AllProductsSideNav: FunctionComponent<Props> = ({ category }) => {
-  const categories = category.map((item) => item.category)
+  const categories = JSON.parse(category).map((item: Product) => item.category)
 
   const uniqueCategories = [...new Set(categories)]
 
@@ -20,7 +20,7 @@ const AllProductsSideNav: FunctionComponent<Props> = ({ category }) => {
         <StyledLi key={item}>
           <Typography>{item}</Typography>
         </StyledLi>
-          ))}
+      ))}
     </StyledCategoriesItem>
   )
 }

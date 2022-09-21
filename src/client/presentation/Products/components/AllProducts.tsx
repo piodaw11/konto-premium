@@ -16,35 +16,38 @@ import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded'
 import { Button } from '@mui/material'
 
 type Props = {
-  allProducts: Product[]
+  allProducts: string
 }
 
-const AllProducts: FunctionComponent<Props> = ({ allProducts }) => (
-  <StyledProductPageWrapper>
-    <StyledCategoriesWrapper>
-      <AllProductsSideNav category={allProducts} />
-    </StyledCategoriesWrapper>
-    <StyledItemWrapper>
-      <StyledFilterWrapper>
-        <StyledSortingWrapper>
-          sortowanie
-        </StyledSortingWrapper>
-        <StyledChangeViewWrapper>
-          <Button variant="contained"><GridViewRoundedIcon /></Button>
-          <Button variant="outlined"><FormatListBulletedIcon /></Button>
-        </StyledChangeViewWrapper>
-      </StyledFilterWrapper>
-      {allProducts.map((item) => (
-        <ProductItems
-          key={item._id}
-          id={item._id}
-          title={item.title}
-          price={item.price}
-          image={item.image}
-        />
-    ))}
-    </StyledItemWrapper>
-  </StyledProductPageWrapper>
-)
+const AllProducts: FunctionComponent<Props> = ({ allProducts }) => {
+  const products = JSON.parse(allProducts)
+  return (
+    <StyledProductPageWrapper>
+      <StyledCategoriesWrapper>
+        <AllProductsSideNav category={allProducts} />
+      </StyledCategoriesWrapper>
+      <StyledItemWrapper>
+        <StyledFilterWrapper>
+          <StyledSortingWrapper>
+            sortowanie
+          </StyledSortingWrapper>
+          <StyledChangeViewWrapper>
+            <Button variant="contained"><GridViewRoundedIcon /></Button>
+            <Button variant="outlined"><FormatListBulletedIcon /></Button>
+          </StyledChangeViewWrapper>
+        </StyledFilterWrapper>
+        {products.map((item: Product) => (
+          <ProductItems
+            key={item._id}
+            id={item._id}
+            title={item.title}
+            price={item.price}
+            image={item.image}
+          />
+        ))}
+      </StyledItemWrapper>
+    </StyledProductPageWrapper>
+  )
+}
 
 export default AllProducts
