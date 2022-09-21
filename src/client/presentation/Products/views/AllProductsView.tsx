@@ -1,10 +1,10 @@
-import AllProducts from 'src/client/presentation/Products/components/AllProducts'
-import Layout from 'src/client/infrastructure/components/Layout/Layout'
-import Product from 'src/client/presentation/Products/types/Product'
 import { FunctionComponent } from 'react'
 
+import AllProducts from 'src/client/presentation/Products/components/AllProducts'
+import Layout from 'src/client/infrastructure/components/Layout/Layout'
+
 type Props = {
-  items: Product[]
+  items: string
 }
 
 const AllProductsView: FunctionComponent<Props> = ({ items }) => (
