@@ -61,6 +61,7 @@ const cartSlice = createSlice({
         Cookies.remove('cart')
       } else {
         existingItem!.totalPrice -= existingItem!.price
+        existingItem!.quantity--
         Cookies.set('cart', JSON.stringify({
           items: state.items,
           totalQuantity: state.totalQuantity,
