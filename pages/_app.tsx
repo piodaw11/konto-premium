@@ -1,7 +1,18 @@
-import "../styles/globals.css";
+import React, { Provider } from 'react-redux'
+import type { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
+import store from 'src/client/app/store'
+import AppProvider from 'src/client/app/common/AppProvider/AppProvider'
+import { SessionProvider } from 'next-auth/react'
 
-export default MyApp;
+const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => (
+  <Provider store={store}>
+    <SessionProvider session={session}>
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
+    </SessionProvider>
+  </Provider>
+)
+
+export default App

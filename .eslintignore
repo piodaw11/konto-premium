@@ -1,0 +1,12 @@
+node_modules/*
+.storybook/*
+public/*
+dist/*
+coverage/*
+react-app-env.d.ts
+**/*.js
+
+**/*/stories.*
+**/__tests__
+
+package.json
