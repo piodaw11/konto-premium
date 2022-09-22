@@ -2,7 +2,6 @@ import { FunctionComponent } from 'react'
 
 import ProductItems from 'src/client/presentation/Products/components/Items/ProductItems'
 import {
-  StyledCategoriesWrapper,
   StyledProductPageWrapper,
   StyledItemWrapper,
   StyledFilterWrapper,
@@ -11,7 +10,6 @@ import {
   StyledProductsWrapper
 } from 'src/client/presentation/Products/components/AllProducts/AllProducts.styled'
 import Product from 'src/client/presentation/Products/types/Product'
-import AllProductsSideNav from 'src/client/presentation/Products/components/SideNav/AllProductsSideNav'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted'
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded'
 import { Button } from '@mui/material'
@@ -24,9 +22,7 @@ const AllProducts: FunctionComponent<Props> = ({ allProducts }) => {
   const products = JSON.parse(allProducts)
   return (
     <StyledProductPageWrapper>
-      <StyledCategoriesWrapper>
-        <AllProductsSideNav category={allProducts} />
-      </StyledCategoriesWrapper>
+
       <StyledItemWrapper>
         <StyledFilterWrapper>
           <StyledSortingWrapper>
