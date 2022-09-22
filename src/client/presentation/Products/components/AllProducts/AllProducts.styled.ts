@@ -47,11 +47,19 @@ const StyledChangeViewWrapper = styled.div`
   }
 `
 
+const StyledProductsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  width: 100%;
+`
+
 export {
   StyledProductPageWrapper,
   StyledCategoriesWrapper,
   StyledFilterWrapper,
   StyledItemWrapper,
   StyledSortingWrapper,
-  StyledChangeViewWrapper
+  StyledChangeViewWrapper,
+  StyledProductsWrapper
 }

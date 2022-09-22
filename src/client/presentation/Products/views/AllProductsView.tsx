@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 
-import AllProducts from 'src/client/presentation/Products/components/AllProducts'
+import AllProducts from 'src/client/presentation/Products/components/AllProducts/AllProducts'
 import Layout from 'src/client/infrastructure/components/Layout/Layout'
 
 type Props = {

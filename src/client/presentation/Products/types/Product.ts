@@ -6,6 +6,7 @@ type Product = {
   description: string
   image: string
   category: string
+  stripeId: string
 }
 
 export default Product

@@ -6,6 +6,7 @@ type ProductState = {
     title: string
     totalPrice: number
     image: string
+    stripeId: string
   }[],
   totalQuantity: number
   totalPriceItems: number

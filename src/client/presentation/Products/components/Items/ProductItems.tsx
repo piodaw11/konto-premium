@@ -13,7 +13,7 @@ import {
   StyledProductWrapper,
   StyledButtonWrapper,
   StyledButtonWishes
-} from './ProductItems.styled'
+} from 'src/client/presentation/Products/components/Items/ProductItems.styled'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 
@@ -22,15 +22,17 @@ type Props = {
   title: string
   price: number
   image: string
+  stripeId: string
 }
 
-const ProductItems: FunctionComponent<Props> = ({ id, title, price, image }) => {
+const ProductItems: FunctionComponent<Props> = ({ id, title, price, image, stripeId }) => {
   const dispatch = useDispatch()
 
   const addToCart = () => {
     dispatch(
       cartActions.addItemToCart({
         id,
+        stripeId,
         title,
         price,
         image

@@ -1,16 +1,17 @@
 import { FunctionComponent } from 'react'
 
-import ProductItems from 'src/client/presentation/Products/components/ProductItems'
+import ProductItems from 'src/client/presentation/Products/components/Items/ProductItems'
 import {
   StyledCategoriesWrapper,
   StyledProductPageWrapper,
   StyledItemWrapper,
   StyledFilterWrapper,
   StyledSortingWrapper,
-  StyledChangeViewWrapper
-} from 'src/client/presentation/Products/components/AllProducts.styled'
+  StyledChangeViewWrapper,
+  StyledProductsWrapper
+} from 'src/client/presentation/Products/components/AllProducts/AllProducts.styled'
 import Product from 'src/client/presentation/Products/types/Product'
-import AllProductsSideNav from 'src/client/presentation/Products/components/AllProductsSideNav'
+import AllProductsSideNav from 'src/client/presentation/Products/components/SideNav/AllProductsSideNav'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted'
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded'
 import { Button } from '@mui/material'
@@ -24,7 +25,7 @@ const AllProducts: FunctionComponent<Props> = ({ allProducts }) => {
   return (
     <StyledProductPageWrapper>
       <StyledCategoriesWrapper>
-        <AllProductsSideNav />
+        <AllProductsSideNav category={allProducts} />
       </StyledCategoriesWrapper>
       <StyledItemWrapper>
         <StyledFilterWrapper>
@@ -36,15 +37,18 @@ const AllProducts: FunctionComponent<Props> = ({ allProducts }) => {
             <Button variant="outlined"><FormatListBulletedIcon /></Button>
           </StyledChangeViewWrapper>
         </StyledFilterWrapper>
-        {products.map((item: Product) => (
-          <ProductItems
-            key={item._id}
-            id={item._id}
-            title={item.title}
-            price={item.price}
-            image={item.image}
-          />
+        <StyledProductsWrapper>
+          {products.map((item: Product) => (
+            <ProductItems
+              key={item._id}
+              id={item._id}
+              title={item.title}
+              price={item.price}
+              image={item.image}
+              stripeId={item.stripeId}
+            />
         ))}
+        </StyledProductsWrapper>
       </StyledItemWrapper>
     </StyledProductPageWrapper>
   )

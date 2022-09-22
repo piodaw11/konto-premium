@@ -34,6 +34,7 @@ const cartSlice = createSlice({
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
+          stripeId: newItem.stripeId,
           price: newItem.price,
           quantity: 1,
           title: newItem.title,

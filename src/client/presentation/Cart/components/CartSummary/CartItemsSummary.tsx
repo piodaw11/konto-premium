@@ -20,16 +20,33 @@ import {
   StyledCartPromoCodeWrapper, StyledCartTotalPrice, StyledCartTotalPriceText, StyledCartTotalPriceWrapper,
   StyledDivider, StyledPaymentMethodCheckbox
 } from 'src/client/presentation/Cart/components/CartSummary/CartItemsSummary.styled'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 type Props = {
   totalPrice: number
 }
 
+type Checkout = {
+  stripeId: string
+  quantity: number
+}
+
 const CartItemsSummary: FunctionComponent<Props> = ({ totalPrice }) => {
   const router = useRouter()
+  const cartItems = useSelector((state: any) => state.cart)
 
-  const checkoutHandler = () => {
-    router.push('/checkout')
+  console.log(cartItems)
+
+  const redirectToCheckout = async () => {
+    await axios.post('/api/checkout_sessions', {
+      items: cartItems.items.map((item: Checkout) => ({
+        price: item.stripeId,
+        quantity: item.quantity
+      }))
+    }).then((res) => {
+      router.push(res.data.url)
+    })
   }
 
   return (
@@ -71,7 +88,7 @@ const CartItemsSummary: FunctionComponent<Props> = ({ totalPrice }) => {
         <StyledCartTotalPrice variant="h5">{totalPrice.toFixed(2)} zł</StyledCartTotalPrice>
       </StyledCartTotalPriceWrapper>
       <StyledCartCheckoutWrapper>
-        <StyledCartCheckoutButton variant="contained" onClick={checkoutHandler}>dalej</StyledCartCheckoutButton>
+        <StyledCartCheckoutButton variant="contained" onClick={redirectToCheckout}>dalej</StyledCartCheckoutButton>
       </StyledCartCheckoutWrapper>
     </StyledCartDetailsWrapper>
   )

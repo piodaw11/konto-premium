@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 
-import ProductItems from 'src/client/presentation/Products/components/ProductItems'
+import ProductItems from 'src/client/presentation/Products/components/Items/ProductItems'
 import Product from 'src/client/presentation/Products/types/Product'
 import { StyledItemListingHeader, StyledItemListingWrapper } from './ItemListing.styled'
 
