@@ -22,6 +22,7 @@ const ItemListing: FunctionComponent<Props> = ({ allProducts }) => {
             title={item.title}
             price={item.price}
             image={item.image}
+            stripeId={item.stripeId}
           />
       ))}
       </StyledItemListingWrapper>
