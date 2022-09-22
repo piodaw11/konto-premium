@@ -7,7 +7,7 @@ const existingCart = Cookies.get('cart') ? JSON.parse(<string>Cookies.get('cart'
 const existingCartItems = existingCart.items ? existingCart.items : []
 
 // {@todo repair totalQuantity after reload page}
-const existingCartTotal: number = existingCart.total > 0 ? existingCart.total : 0
+const existingCartTotal: number = existingCart.totalQuantity > 0 ? existingCart.totalQuantity : 0
 const existingCartTotalPrice: number = existingCart.totalPrice > 0 ? existingCart.totalPrice : 0
 
 const initialState: ProductState = {
