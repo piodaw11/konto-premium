@@ -63,7 +63,6 @@ const ProductDetail: FunctionComponent<Props> = ({ product }) => {
       <StyledProductDetailsContainer>
         <ProductDetailItem
           title={product.title}
-          price={product.price}
           image={product.image}
           description={product.description}
           category={product.category}
