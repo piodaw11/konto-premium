@@ -2,7 +2,7 @@ import { StyledLayoutWrapper,
   StyledLayoutChildrenWrapper } from 'src/client/infrastructure/components/Layout/Layout.styled'
 import Navbar from 'src/client/infrastructure/components/Navbar/Navbar'
 import Head from 'next/head'
-import React, { FunctionComponent, ReactNode } from 'react'
+import { FunctionComponent, ReactNode, memo } from 'react'
 
 type Props = {
   children: ReactNode
@@ -22,4 +22,4 @@ const Layout: FunctionComponent<Props> = ({ children }) => (
   </StyledLayoutWrapper>
 )
 
-export default Layout
+export default memo(Layout)

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent, memo } from 'react'
 import Link from 'next/link'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
 import SearchIcon from '@mui/icons-material/Search'
@@ -86,4 +86,4 @@ const Navbar: FunctionComponent = () => {
   )
 }
 
-export default Navbar
+export default memo(Navbar)

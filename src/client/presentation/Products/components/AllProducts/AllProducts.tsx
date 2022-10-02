@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, memo } from 'react'
 
 import ProductItems from 'src/client/presentation/Products/components/Items/ProductItems'
 import {
@@ -54,4 +54,4 @@ const AllProducts: FunctionComponent<Props> = ({ allProducts }) => {
   )
 }
 
-export default AllProducts
+export default memo(AllProducts)
