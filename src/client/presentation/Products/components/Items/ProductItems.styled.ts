@@ -15,6 +15,8 @@ const StyledProductWrapper = styled.div`
 const StyledImageWrapper = styled.div`
   width: 200px;
   height: 200px;
+  margin: 0 auto;
+  cursor: pointer;
 `
 
 const StyledImage = styled.img`

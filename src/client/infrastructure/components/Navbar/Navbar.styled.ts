@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Badge } from '@mui/material'
+import { Badge, Drawer } from '@mui/material'
 
 const StyledNavbar = styled.nav<{ navbarHeight: string }>`
   display: flex;
@@ -98,6 +98,10 @@ const StyledBadgeWrapper = styled(Badge)`
   cursor: pointer;
 `
 
+const StyledDrawer = styled(Drawer)`
+  z-index: 2001;
+`
+
 export {
   StyledNavbar,
   StyledLogoWrapper,
@@ -109,5 +113,6 @@ export {
   StyledDivider,
   StyledSearchIconWrapper,
   StyledSearchElementsWrapper,
-  StyledBadgeWrapper
+  StyledBadgeWrapper,
+  StyledDrawer
 }

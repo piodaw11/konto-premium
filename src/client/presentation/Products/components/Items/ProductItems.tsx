@@ -16,6 +16,8 @@ import {
 } from 'src/client/presentation/Products/components/Items/ProductItems.styled'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import Link from 'next/link'
+import Pages from 'src/client/infrastructure/enums/Pages'
 
 type Props = {
   id: string
@@ -43,9 +45,11 @@ const ProductItems: FunctionComponent<Props> = ({ id, title, price, image, strip
   return (
     <StyledItemsWrapper>
       <StyledProductWrapper>
-        <StyledImageWrapper>
-          <StyledImage src={image} />
-        </StyledImageWrapper>
+        <Link href={`${Pages.Products}/${id}`}>
+          <StyledImageWrapper>
+            <StyledImage src={image} />
+          </StyledImageWrapper>
+        </Link>
         <StyledContentWrapper>
           <StyledTitle variant="h6">
             {title}

@@ -68,11 +68,11 @@ const CartItemsSummary: FunctionComponent<Props> = ({ totalPrice }) => {
         <StyledCartPaymentMethodUl>
           <StyledCartPaymentMethodLi>
             <StyledCartPaymentMethodLiItemWrapper>
-              <StyledCartPaymentMethodTitle>
-                PAYU
+              <StyledCartPaymentMethodTitle variant="h6">
+                Stripe
               </StyledCartPaymentMethodTitle>
               <StyledCartPaymentMethodDescription>
-                Szybka płatność
+                Szybkie płatności
               </StyledCartPaymentMethodDescription>
             </StyledCartPaymentMethodLiItemWrapper>
             <StyledPaymentMethodCheckbox disabled checked />

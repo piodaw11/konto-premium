@@ -4,10 +4,6 @@ const ProductPageTabs = [
   {
     label: 'Produkty',
     path: Pages.Products
-  },
-  {
-    label: 'Kategorie',
-    path: Pages.Categories
   }
 ]
 

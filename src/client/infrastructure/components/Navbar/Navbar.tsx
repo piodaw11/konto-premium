@@ -7,6 +7,7 @@ import { InputBase } from '@mui/material'
 import {
   StyledBadgeWrapper,
   StyledDivider,
+  StyledDrawer,
   StyledLogo,
   StyledLogoWrapper,
   StyledNav,
@@ -17,14 +18,21 @@ import {
   StyledSearchIconWrapper,
   StyledSearchWrapper
 } from 'src/client/infrastructure/components/Navbar/Navbar.styled'
-import homePageTabs from 'src/client/infrastructure/components/Layout/constants/Tabs/ProductPageTabs'
-import AccountTabs from 'src/client/infrastructure/components/Layout/constants/Tabs/AccountTabs'
+import homePageTabs from 'src/client/infrastructure/components/Navbar/constants/Tabs/ProductPageTabs'
+import AccountTabs from 'src/client/infrastructure/components/Navbar/constants/Tabs/AccountTabs'
 import { useSelector } from 'react-redux'
 
 import Pages from 'src/client/infrastructure/enums/Pages'
+import useCartDrawer from 'src/client/infrastructure/hooks/useCartDrawer'
 
 const Navbar: FunctionComponent = () => {
   const totalQuantity = useSelector((state: any) => state.cart.totalQuantity)
+
+  const {
+    openCart,
+    toggleDrawer,
+    list
+  } = useCartDrawer()
 
   return (
     <StyledNavbar navbarHeight="80px">
@@ -49,6 +57,7 @@ const Navbar: FunctionComponent = () => {
           <InputBase
             placeholder="Szukaj…"
             inputProps={{ 'aria-label': 'search' }}
+            onClick={() => console.log('search')}
           />
         </StyledSearchElementsWrapper>
       </StyledSearchWrapper>
@@ -59,13 +68,20 @@ const Navbar: FunctionComponent = () => {
           </StyledNavItem>
       ))}
       </StyledNav>
-      <StyledNavCart>
-        <Link href={Pages.Cart}>
-          <StyledBadgeWrapper badgeContent={totalQuantity} color="error">
-            <ShoppingBasketIcon fontSize="large" />
-          </StyledBadgeWrapper>
-        </Link>
+      <StyledNavCart onClick={toggleDrawer('right', true)}>
+        <StyledBadgeWrapper badgeContent={totalQuantity} color="error">
+          <ShoppingBasketIcon fontSize="large" />
+        </StyledBadgeWrapper>
       </StyledNavCart>
+      <div>
+        <StyledDrawer
+          anchor="right"
+          open={openCart.right}
+          onClose={toggleDrawer('right', false)}
+        >
+          {list('right')}
+        </StyledDrawer>
+      </div>
     </StyledNavbar>
   )
 }
