@@ -31,7 +31,7 @@ const ProductDetailItem: FunctionComponent<Props> = (
       <Link href={Pages.Home}>
         <StyledLinkText>&#8592; Wróć do produktów</StyledLinkText>
       </Link>
-      <StyledImage src={image} alt={title} />
+      <StyledImage src={image} alt={title} width={300} height={300} loading="lazy" />
     </StyledImageWrapper>
     <StyledInfoWrapper>
       <StyledNameWrapper>

@@ -47,7 +47,7 @@ const ProductItems: FunctionComponent<Props> = ({ id, title, price, image, strip
       <StyledProductWrapper>
         <Link href={`${Pages.Products}/${id}`}>
           <StyledImageWrapper>
-            <StyledImage src={image} />
+            <StyledImage src={image} loading="lazy" width={200} height={200} />
           </StyledImageWrapper>
         </Link>
         <StyledContentWrapper>

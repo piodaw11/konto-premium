@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Image from 'next/image'
 import { Button, Typography } from '@mui/material'
 
 const StyledItemsWrapper = styled.div`
@@ -19,9 +20,7 @@ const StyledImageWrapper = styled.div`
   cursor: pointer;
 `
 
-const StyledImage = styled.img`
-  width: 100%;
-  height: 100%;
+const StyledImage = styled(Image)`
   border-radius: 8px;
 `
 

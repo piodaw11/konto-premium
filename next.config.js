@@ -5,6 +5,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: ['play-lh.googleusercontent.com', 'upload.wikimedia.org', 'prywatnoscwsieci.pl'],
+  }
 }
 
 module.exports = nextConfig

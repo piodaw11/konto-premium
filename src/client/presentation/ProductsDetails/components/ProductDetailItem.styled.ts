@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Image from 'next/image'
 import { Button, Typography } from '@mui/material'
 
 const StyledProductWrapper = styled.div`
@@ -27,9 +28,7 @@ const StyledLinkText = styled.a`
   cursor: pointer;
 `
 
-const StyledImage = styled.img`
-  width: 300px;
-  height: 300px;
+const StyledImage = styled(Image)`
   border-radius: 3px;
   box-shadow: 0 0 24px 0 #000;
 `
