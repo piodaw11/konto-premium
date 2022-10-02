@@ -1,5 +1,6 @@
-import axios from 'axios'
 import { FunctionComponent } from 'react'
+import { MongoClient } from 'mongodb'
+import { ObjectId } from 'bson'
 
 import ProductDetailView from 'src/client/presentation/ProductsDetails/views/ProductDetailView'
 import Product from 'src/client/presentation/Products/types/Product'
@@ -13,12 +14,16 @@ const ProductDetails: FunctionComponent<Props> = ({ post }) => <ProductDetailVie
 export default ProductDetails
 
 export const getStaticPaths = async () => {
-  const res = await axios.get('https://konto-premium.pl/api/products/getAll')
-  const { products } = res.data
+  const client = await MongoClient.connect(process.env.MONGODB_URI!)
+  await client.connect()
+  const db = client.db(process.env.MONGODB_DB)
 
-  const paths = products.map((product: any) => ({
-      params: { id: product._id }
-    }))
+  const productsCollection = db.collection('products')
+  const products = await productsCollection.find().toArray()
+
+  const paths = products.map((product) => ({
+    params: { id: product._id.toString() }
+  }))
 
   return {
     paths,
@@ -28,15 +33,17 @@ export const getStaticPaths = async () => {
 
 // get product details when id is correct
 export const getStaticProps = async (context: any) => {
-  const { id } = context.params
-  const res = await axios.get('https://konto-premium.pl/api/products/id/', {
-    params: { id }
-  })
-  const { product } = res.data
+  const client = await MongoClient.connect(process.env.MONGODB_URI!)
+  await client.connect()
+  const db = client.db(process.env.MONGODB_DB)
+
+  const productsCollection = db.collection('products')
+  const id = new ObjectId(context.params.id)
+  const product = await productsCollection.findOne({ _id: id })
 
   return {
     props: {
-      post: product
+      post: JSON.parse(JSON.stringify(product))
     }
   }
 }

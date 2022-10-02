@@ -19,7 +19,6 @@ export const getServerSideProps = async () => {
   const productsCollection = db.collection('products')
 
   const products = await productsCollection.find().toArray()
-  console.log(products)
 
   return {
     props: {

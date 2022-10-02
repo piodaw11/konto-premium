@@ -15,8 +15,6 @@ const GetId = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const product = await productsCollection.findOne({ _id: id })
 
-  console.log(await productsCollection.findOne({ _id: id }))
-
   await client.close()
 
   res.status(200).json({
