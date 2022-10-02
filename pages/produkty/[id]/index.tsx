@@ -13,7 +13,7 @@ const ProductDetails: FunctionComponent<Props> = ({ post }) => <ProductDetailVie
 export default ProductDetails
 
 export const getStaticPaths = async () => {
-  const res = await axios.get('http://localhost:3000/api/products/getAll')
+  const res = await axios.get('https://konto-premium.pl/api/products/getAll')
   const { products } = res.data
 
   const paths = products.map((product: any) => ({
@@ -29,7 +29,7 @@ export const getStaticPaths = async () => {
 // get product details when id is correct
 export const getStaticProps = async (context: any) => {
   const { id } = context.params
-  const res = await axios.get('http://localhost:3000/api/products/id/', {
+  const res = await axios.get('https://konto-premium.pl/api/products/id/', {
     params: { id }
   })
   const { product } = res.data
